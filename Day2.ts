@@ -1,7 +1,5 @@
-import { Console } from 'console';
 import { readFileSync, promises as fsPromises } from 'fs';
 import { join, resolve } from 'path';
-import { getEnvironmentData } from 'worker_threads';
 
 function getData(handle: string) {
 
