@@ -1,4 +1,3 @@
-import { CharacterEncoding } from 'crypto';
 import { readFileSync, promises as fsPromises } from 'fs';
 import { join, resolve } from 'path';
 
