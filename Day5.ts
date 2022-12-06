@@ -47,16 +47,14 @@ function getData(handle: string) {
 
 
 function part1(stacks:Stack<string>[], orders:number[][]) { //gets part 1 answer
-
-    let tempstacks:Stack<string>[] = stacks;
     for (let order of orders) {
         for (let i = 0; i < order[0]; i++) {
-            let crate:string = tempstacks[order[1]-1].pop() as string;
-            tempstacks[order[2]-1].push(crate);
+            let crate:string = stacks[order[1]-1].pop() as string;
+            stacks[order[2]-1].push(crate);
         }
     }
     let top = '';
-    for (let stack of tempstacks) {
+    for (let stack of stacks) {
         top += stack.peek() as string;
     }
     return top; 
@@ -81,10 +79,17 @@ function part2(stacks:Stack<string>[], orders:number[][]) { //gets part 2 answer
     }
     return top; 
 }
+let top;
+let top2;
+for (let i = 0; i<2; i++) {
+    let {stacks, orders} = getData("input.txt");
+    if (i == 0) {
+        top = part1(stacks, orders);
+    } if (i == 1) {
+        top2 = part2(stacks, orders);
+    }
+}
 
-let {stacks, orders} = getData("input.txt");
-//let top = part1(stacks, orders);
-let top2 = part2(stacks, orders);
 
-//console.log("The crates that end up at the top of each stack is: " + top); //print out part 1 answer
-console.log("The crates that end up at the top of each stack moving multiple crates at once is " + top2); //print out part 2 answer
+console.log("The crates that end up at the top of each stack is: " + top); //print out part 1 answer
+console.log("The crates that end up at the top of each stack moving multiple crates at once is: " + top2); //print out part 2 answer

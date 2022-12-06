@@ -40,15 +40,14 @@ function getData(handle) {
     return { stacks, orders };
 }
 function part1(stacks, orders) {
-    let tempstacks = stacks;
     for (let order of orders) {
         for (let i = 0; i < order[0]; i++) {
-            let crate = tempstacks[order[1] - 1].pop();
-            tempstacks[order[2] - 1].push(crate);
+            let crate = stacks[order[1] - 1].pop();
+            stacks[order[2] - 1].push(crate);
         }
     }
     let top = '';
-    for (let stack of tempstacks) {
+    for (let stack of stacks) {
         top += stack.peek();
     }
     return top;
@@ -71,9 +70,17 @@ function part2(stacks, orders) {
     }
     return top;
 }
-let { stacks, orders } = getData("input.txt");
-//let top = part1(stacks, orders);
-let top2 = part2(stacks, orders);
-//console.log("The crates that end up at the top of each stack is: " + top); //print out part 1 answer
-console.log("The crates that end up at the top of each stack moving multiple crates at once is " + top2); //print out part 2 answer
+let top;
+let top2;
+for (let i = 0; i < 2; i++) {
+    let { stacks, orders } = getData("input.txt");
+    if (i == 0) {
+        top = part1(stacks, orders);
+    }
+    if (i == 1) {
+        top2 = part2(stacks, orders);
+    }
+}
+console.log("The crates that end up at the top of each stack is: " + top); //print out part 1 answer
+console.log("The crates that end up at the top of each stack moving multiple crates at once is: " + top2); //print out part 2 answer
 //# sourceMappingURL=Day5.js.map
