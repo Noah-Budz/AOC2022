@@ -36,24 +36,22 @@ function part2(treeGrid) {
     let scenicScores = [];
     for (let i = 1; i < treeGrid[0].length - 1; i++) {
         for (let j = 1; j < transposedTree[0].length - 1; j++) {
-            let north = transposedTree[j].slice(0, i).findIndex(el => { return el >= treeGrid[i][j]; });
+            let north = transposedTree[j].slice(0, i).reverse().findIndex(el => { return el >= treeGrid[i][j]; });
             north = (north >= 0 ? north + 1 : transposedTree[j].slice(0, i).length);
             let south = transposedTree[j].slice(i + 1).findIndex(el => { return el >= treeGrid[i][j]; });
             south = (south >= 0 ? south + 1 : transposedTree[j].slice(i + 1).length);
             let east = treeGrid[i].slice(j + 1).findIndex(el => { return el >= treeGrid[i][j]; });
             east = (east >= 0 ? east + 1 : treeGrid[i].slice(j + 1).length);
-            let west = treeGrid[i].slice(0, j).findIndex(el => { return el >= treeGrid[i][j]; });
+            let west = treeGrid[i].slice(0, j).reverse().findIndex(el => { return el >= treeGrid[i][j]; });
             west = (west >= 0 ? west + 1 : treeGrid[i].slice(0, j).length);
-            console.log(north, south, west, east);
             scenicScores.push(north * south * west * east);
         }
     }
-    console.log(scenicScores);
     return Math.max(...scenicScores);
 }
 let treeGrid = getData("input.txt");
-//let visibleTrees = part1(treeGrid);
+let visibleTrees = part1(treeGrid);
 let scenicTree = part2(treeGrid);
-//console.log("The total amount of visible trees from outside the grid: " + visibleTrees); //print out part 1 answer
+console.log("The total amount of visible trees from outside the grid: " + visibleTrees); //print out part 1 answer
 console.log("The tree with the most scenic score has a value of: " + scenicTree); //print out part 2 answer
 //# sourceMappingURL=Day8.js.map
