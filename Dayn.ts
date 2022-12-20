@@ -26,5 +26,5 @@ let object = getData("input.txt");
 let part1ans = part1(object);
 let part2ans = part2(object);
 
-console.log("The answer to part 1 is: " + part1ans); //print out part 1 answer
-console.log("The answer to part 2 is: " + part2ans); //print out part 2 answer
+//console.log("The answer to part 1 is: " + part1ans); //print out part 1 answer
+//console.log("The answer to part 2 is: " + part2ans); //print out part 2 answer

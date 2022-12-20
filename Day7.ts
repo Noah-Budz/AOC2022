@@ -94,8 +94,8 @@ function part2(fileTree: {[key: string]: string[]}) { //gets part 2 answer
 
 let commands = getData("input.txt");
 let fileTree = makeDirectory(commands);
-let part1ans = part1(fileTree);
-let part2ans = part2(fileTree);
+let sizes = part1(fileTree);
+let directory = part2(fileTree);
 
-console.log("The answer to part 1 is: " + part1ans); //print out part 1 answer
-console.log("The answer to part 2 is: " + part2ans); //print out part 2 answer
+console.log("The total size of directories under 100MB is: " + sizes + "b"); //print out part 1 answer
+console.log("The directory to be deleted for space is: " + directory); //print out part 2 answer
